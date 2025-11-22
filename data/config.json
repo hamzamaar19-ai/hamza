@@ -1,0 +1,17 @@
+{
+  "affiliateLinks": {
+    "namecheap": "https://www.namecheap.com/domains/?aff=YOUR_CODE",
+    "godaddy": "https://www.godaddy.com/domains/searchresults.aspx?isc=YOUR_CODE",
+    "porkbun": "https://porkbun.com/checkout/affiliate/YOUR_CODE",
+    "cloudflare": "https://dash.cloudflare.com/?to=/:account/domains"
+  },
+  "apiProviders": {
+    "domainAvailability": "https://api.domainr.com/v2/status",
+    "priceEstimation": "https://api.godaddy.com/v1/appraisal"
+  },
+  "analytics": {
+    "totalLookups": 0,
+    "favoriteSaves": 0,
+    "lastUpdated": null
+  }
+}

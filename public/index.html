@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domain Availability Lab</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="light">
+  <header class="topbar">
+    <div class="brand">Domain Availability Lab</div>
+    <div class="actions">
+      <button id="toggle-language" class="ghost">AR / EN</button>
+      <button id="toggle-theme" class="ghost">🌙</button>
+      <a class="ghost" href="/admin.html">Admin</a>
+    </div>
+  </header>
+  <main class="layout">
+    <aside class="filters">
+      <h2 data-i18n="filters">Filters</h2>
+      <label>
+        <span data-i18n="desiredLength">Desired length</span>
+        <select id="length">
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="includeNumbers" />
+        <span data-i18n="includeNumbers">Include numbers</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="lettersOnly" />
+        <span data-i18n="lettersOnly">Letters only</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="allowHyphen" />
+        <span data-i18n="allowHyphen">Allow hyphens</span>
+      </label>
+      <label>
+        <span data-i18n="tlds">TLD extensions</span>
+        <select id="tlds" multiple>
+          <option value=".com" selected>.com</option>
+          <option value=".net">.net</option>
+          <option value=".io">.io</option>
+          <option value=".co">.co</option>
+          <option value=".ai">.ai</option>
+        </select>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="random" />
+        <span data-i18n="random">Random suggestions</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="showAll" />
+        <span data-i18n="showAll">Show all statuses</span>
+      </label>
+      <label>
+        <span data-i18n="maxResults">Max results</span>
+        <input type="number" id="maxResults" min="10" max="750" value="150" />
+      </label>
+      <button id="generate" class="primary" data-i18n="generate">Generate</button>
+      <button id="exportCsv" class="secondary" data-i18n="exportCsv">Export CSV</button>
+      <button id="exportJson" class="secondary" data-i18n="exportJson">Export JSON</button>
+    </aside>
+
+    <section class="content">
+      <div class="search">
+        <input id="search" placeholder="Search keywords" data-i18n-placeholder="search" />
+        <button id="checkSelected" class="primary" data-i18n="check">Check availability</button>
+      </div>
+      <div class="quick">
+        <div class="stat">
+          <div data-i18n="recent">Recently viewed</div>
+          <div id="recentList" class="chips"></div>
+        </div>
+        <div class="stat">
+          <div data-i18n="favorites">Favorites</div>
+          <div id="favoriteList" class="chips"></div>
+        </div>
+        <div class="stat">
+          <div data-i18n="trending">Trending patterns</div>
+          <div id="trending" class="chips"></div>
+        </div>
+      </div>
+      <div id="meta" class="meta"></div>
+      <table class="results">
+        <thead>
+          <tr>
+            <th data-i18n="domain">Domain</th>
+            <th data-i18n="availability">Availability</th>
+            <th data-i18n="price">Est. price</th>
+            <th data-i18n="rating">Rating</th>
+            <th data-i18n="actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

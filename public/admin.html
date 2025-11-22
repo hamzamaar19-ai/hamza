@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="light">
+  <header class="topbar">
+    <div class="brand">Admin Dashboard</div>
+    <div class="actions">
+      <a class="ghost" href="/">Back</a>
+    </div>
+  </header>
+  <main class="layout" style="grid-template-columns: 1fr;">
+    <section class="content">
+      <h2>Affiliate links</h2>
+      <div class="grid" id="affiliateForm"></div>
+      <h2>API providers</h2>
+      <div class="grid" id="apiForm"></div>
+      <h2>Analytics snapshot</h2>
+      <pre id="analytics" class="stat"></pre>
+      <button id="saveAdmin" class="primary">Save settings</button>
+      <div id="saveStatus" class="meta"></div>
+    </section>
+  </main>
+  <script src="/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "domain-finder",
+  "version": "1.0.0",
+  "description": "Domain availability search engine with admin dashboard",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
