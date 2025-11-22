@@ -1,0 +1,29 @@
+.das-app { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #f2f5ff; background: linear-gradient(135deg, #0f172a, #111827); padding: 20px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.25); }
+.das-app.light { background: #f7fafc; color: #0f172a; }
+.das-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.das-actions button { margin-left: 8px; }
+.das-grid { display: grid; grid-template-columns: 280px 1fr; gap: 16px; }
+.das-sidebar { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; }
+.das-sidebar label { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.das-sidebar input, .das-sidebar select { margin-left: 8px; padding: 6px; }
+.das-main { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px; }
+.das-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+.das-bar input { flex: 1; padding: 10px; border-radius: 8px; border: none; }
+.das-bar button { padding: 10px 12px; border-radius: 8px; border: none; background: #22c55e; color: #0b1324; cursor: pointer; }
+.das-meta { margin-bottom: 10px; font-size: 14px; }
+.das-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: rgba(255,255,255,0.08); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+.das-table { width: 100%; border-collapse: collapse; }
+.das-table th, .das-table td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; }
+.das-table tbody tr:hover { background: rgba(255,255,255,0.04); }
+.badge { padding: 4px 8px; border-radius: 6px; text-transform: capitalize; }
+.badge.available { background: #22c55e; color: #0b1324; }
+.badge.taken { background: #ef4444; }
+.badge.premium { background: #f59e0b; }
+.badge.for-sale { background: #6366f1; }
+.das-actions .buy, .action-buttons .buy { background: #22d3ee; padding: 6px 8px; border-radius: 6px; margin-right: 4px; color: #0b1324; text-decoration: none; }
+.action-buttons { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.favorite { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: inherit; border-radius: 6px; padding: 4px 6px; cursor: pointer; }
+.loading { text-align: center; }
+@media (max-width: 900px) { .das-grid { grid-template-columns: 1fr; } .das-sidebar { order: 2; } .das-main { order: 1; } }

@@ -36,6 +36,16 @@ A full-stack domain availability search engine with filters, price estimation, a
 - **cPanel/VPS:** upload the repo, run `npm start` with a process manager (pm2/systemd), and proxy port 3000 through Apache/Nginx.
 - **Static CDN + API:** host `public/` on a CDN and point frontend `fetch` calls to a separately hosted instance of `src/server.js`.
 
+### WordPress plugin option
+If you prefer to drop the experience into an existing WordPress site, use the bundled plugin under `wordpress-plugin/domain-availability-search/`:
+
+1. Zip the folder `wordpress-plugin/domain-availability-search` and upload it via **Plugins → Add New → Upload Plugin**.
+2. Activate, then add the shortcode `[domain_availability_search]` to any page/post or block.
+3. Configure defaults in **Settings → Domain Search** (TLD list, max results, registrar affiliate templates with `%s` placeholder for the domain).
+4. The plugin exposes REST routes under `/wp-json/domain-search/v1/generate` and `/wp-json/domain-search/v1/check` for the UI and third-party integrations. Responses mirror the Node demo shape so you can swap in live provider logic.
+
+> Note: the plugin ships with mock availability/pricing logic meant for demos. Replace the REST callbacks in `wp-domain-availability-search.php` with real provider SDK/API calls as needed.
+
 ## Monetization tips
 - Swap affiliate URLs in the admin dashboard with your tracking codes.
 - Add registrar-specific promo codes in query params when constructing buy links.
