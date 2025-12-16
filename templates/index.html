@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Tableau de bord</h1>
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card text-bg-primary">
+      <div class="card-body">
+        <h5 class="card-title">Parc</h5>
+        <p class="display-6">{{ vehicle_count }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-bg-success">
+      <div class="card-body">
+        <h5 class="card-title">Clients</h5>
+        <p class="display-6">{{ client_count }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-bg-warning">
+      <div class="card-body">
+        <h5 class="card-title">Réservations</h5>
+        <p class="display-6">{{ reservation_count }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">Tâches ouvertes</h5>
+        <p class="display-6">{{ open_tasks }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">Réservations à venir</div>
+      <div class="card-body">
+        {% if upcoming_reservations %}
+        <ul class="list-group list-group-flush">
+          {% for reservation in upcoming_reservations %}
+          <li class="list-group-item">
+            {{ reservation.vehicle.name }} — {{ reservation.client.name }}<br />
+            du {{ reservation.start_date }} au {{ reservation.end_date }} ({{ reservation.status }})
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">Aucune réservation planifiée.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">Tâches à traiter</div>
+      <div class="card-body">
+        {% if pending_tasks %}
+        <ul class="list-group list-group-flush">
+          {% for task in pending_tasks %}
+          <li class="list-group-item">
+            <strong>{{ task.title }}</strong>
+            {% if task.due_date %}
+            <span class="badge bg-info text-dark">Échéance {{ task.due_date }}</span>
+            {% endif %}
+            <div class="small text-muted">{{ task.description }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">Pas de tâches ouvertes.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

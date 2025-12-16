@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Parc automobile</h1>
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header">Ajouter un véhicule</div>
+      <div class="card-body">
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input name="name" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Immatriculation</label>
+            <input name="plate_number" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Statut</label>
+            <select class="form-select" name="status">
+              <option>Disponible</option>
+              <option>En location</option>
+              <option>En maintenance</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tarif journalier (€)</label>
+            <input name="daily_rate" type="number" step="0.01" class="form-control" />
+          </div>
+          <button class="btn btn-primary">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">Liste du parc</div>
+      <div class="card-body p-0">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Plaque</th>
+              <th>Statut</th>
+              <th>Tarif</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for vehicle in vehicles %}
+            <tr>
+              <td>{{ vehicle.name }}</td>
+              <td>{{ vehicle.plate_number }}</td>
+              <td>{{ vehicle.status }}</td>
+              <td>{{ '%.2f'|format(vehicle.daily_rate) }} €</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4" class="text-center text-muted">Aucun véhicule pour le moment.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Réservations</h1>
+<div class="row">
+  <div class="col-md-5 mb-4">
+    <div class="card">
+      <div class="card-header">Créer une réservation</div>
+      <div class="card-body">
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Véhicule</label>
+            <select class="form-select" name="vehicle_id" required>
+              {% for vehicle in vehicles %}
+              <option value="{{ vehicle.id }}">{{ vehicle.name }} ({{ vehicle.plate_number }})</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Client</label>
+            <select class="form-select" name="client_id" required>
+              {% for client in clients %}
+              <option value="{{ client.id }}">{{ client.name }} - {{ client.email }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date de début</label>
+            <input type="date" name="start_date" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date de fin</label>
+            <input type="date" name="end_date" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Statut</label>
+            <select name="status" class="form-select">
+              <option>Confirmée</option>
+              <option>En attente</option>
+              <option>Annulée</option>
+            </select>
+          </div>
+          <button class="btn btn-primary">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-header">Historique</div>
+      <div class="card-body p-0">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th>Véhicule</th>
+              <th>Client</th>
+              <th>Dates</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for reservation in reservations %}
+            <tr>
+              <td>{{ reservation.vehicle.name }}</td>
+              <td>{{ reservation.client.name }}</td>
+              <td>{{ reservation.start_date }} → {{ reservation.end_date }}</td>
+              <td>{{ reservation.status }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4" class="text-center text-muted">Aucune réservation enregistrée.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
